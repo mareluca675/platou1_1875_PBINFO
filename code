@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int n, secv, secvmax = -1, mini = 10, x = -1;
+
+int main()
+{
+    ifstream fin("platou1.in");
+    ofstream fout("platou1.out");
+    
+    while(fin >> n)
+    {
+        if(x == n)
+        {
+            secv ++;
+        }
+        else
+        {
+            if(secv > secvmax)
+            {
+                secvmax = secv;
+                mini = x;
+            }
+            else if(secv == secvmax)
+            {
+                if(x < mini)
+                {
+                    mini = x;
+                }
+            }
+            
+            secv = 0;
+        }
+        
+        x = n;
+    }
+    
+    fout << secvmax + 1 << " " << mini;
+    
+    return 0;
+}
